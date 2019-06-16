@@ -1,0 +1,167 @@
+db.student.insert(
+		{
+		_id:1,
+		Name: "Dinesh",
+		Age:25,
+		Mobile: 123456779,
+		Batch:2073,
+		Address: "Lamachaur"
+		}
+)
+
+db.student.insert(
+		{
+		_id:2,
+		Name: "Ramesh",
+		Age:22,
+		Mobile: 124356779,
+		Batch:2073,
+		Address: "Bagar",
+		Hobbies: "Baseball"
+		}
+)
+
+db.student.insert(
+		{
+		_id:3,
+		Name: "Nitesh",
+		Age:23,
+		Mobile:893457879,
+		Batch:2073,
+		Address:"Simpani"
+		}
+)
+db.student.insert(
+		{
+		_id:4,
+		Name: "Santosh",
+		Age:21,
+		Mobile: 987456779,
+		Batch:2073,
+		Address: "Batulechaur"
+		}
+)
+
+db.student.insert(
+		{
+		_id:5,
+		Name: "Biplav",
+		Age:23,
+		Mobile:773456779,
+		Batch:2072,
+		Address: "Halan Chowk"
+		}
+)
+//////////////////////////////////// To INSERT BULK Documents/////////////////////
+db.post.insert([
+	 	{
+			_id:1,
+			Name: "Dinesh",
+			Age:25
+			},
+		{
+			_id:2,
+			Name: "Ramesh",
+			Age:22
+		},
+	    {
+			_id:3,
+			Name: "Nitesh",
+			Age:23
+		}
+ ] )	
+  
+ ///////////////////////////////////////////////
+db.food.insert({_id:1,fruits:['Banana','Apple','Cherry']})	
+db.food.insert({_id:2,fruits:['Orange','Mango','Grapes']})	
+db.food.insert({_id:3,fruits:['Pineapple','Strawberry','Grapes']})	
+db.food.insert({_id:4,fruits:['Orange','Grapes']})	
+
+
+
+////////////////////////////////////////////////////////////////////
+db.student.update(
+		{
+		_id:6,
+		Name: "Bhimesh",
+		Age:24,
+		Mobile:7777856779,
+		Batch:2073,
+		Address: "Halan Chowk"
+		},
+		{$set:{Hobbies:"Basketball"}},
+		{upsert:true}
+      )
+	  
+db.student.update(
+		{
+		_id:6,
+		Name: "Bhimesh",
+		Age:24,
+		Mobile:7777856779,
+		Batch:2073,
+		Address: "Halan Chowk"
+		},
+		{$set:{Hobbies:"Chess"}},
+		{upsert:true}
+      )
+//////////////////////////////////////////////////////////////////
+db.student.save(
+		{
+		_id:7,
+		Name:"Bhim",
+		Batch:2072,
+		Address: "Halan Chowk"
+		}
+	 )
+//////////////////////////////////////////////////////////////////////	 
+	 
+db.student.update(
+		{_id:1},
+		{$set:{Gender:"Male"}}
+      )
+//////////////////////////////////////////////////////////////////////	 
+
+db.student.remove(
+		{_id:2}
+		)
+///////////////////////////////////////////////////////////////////////////
+db.student.remove(
+		{Name:"Shyam"},1
+		)
+//////////////////////////////////////////////////////////////////////////
+
+db.student.update(
+		{_id:1},
+		{$unset:{Gender:"Male"}}
+      )
+/////////////////////////////////////////////////////////////////////////
+db.student.find({Name:"Dinesh"})
+
+//////////////////////////////////////////////////////////////////////////
+
+db.student.find({},{Name:1,_id:0}).pretty()
+
+//////////////////////////////////////////////////////////////////////////
+
+db.student.find({},{Name:1,Batch:1,Address:1,_id:0}).pretty()
+//////////////////////////////////////////////////////////////////////////////
+db.student.find({Batch:2073},{Name:1,Address:1}).pretty()
+
+////////////////////////////////////////////////////////////////
+db.student.find({Age:{$eq:23}})
+///////////////////////////////////////////////////////////////////
+db.student.find({Address:{$in:["Bagar","New Road"]}})
+////////////////////////////////////////////////////////////////////////////
+db.student.find({Address:{$nin:["Bagar","New Road"]}})
+////////////////////////////////////////////////////////
+db.student.update(
+		{_id:3},
+		{$set:{Address:null}}
+		)
+//////////////////////////////////////////////		
+db.student.find(
+		{Address:{$eq:null}}
+		)	
+		
+		
